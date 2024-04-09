@@ -1,8 +1,8 @@
 main();
 
 function main() {
-	expect([1, 6, 3], 1);
-	expect([2, 6, 7], 6);
+  expect([1, 6, 3], 1);
+  expect([2, 6, 7], 6);
 
   // Other tests
   expect([2, 6, 1], 0);
@@ -25,7 +25,7 @@ function expect(testArgs, toBe) {
  * @param {number} m face count per die
  */
 function diceSum(n, m, target) {
-	return countFactors(n, m, target);
+  return countFactors(n, m, target);
 }
 
 /**
@@ -37,18 +37,18 @@ function diceSum(n, m, target) {
  * @returns {number}
  */
 function countFactors(die, maxFactor, target) {
-	let count = 0, 
+  let count = 0,
     diff = 0;
 
   die--;
-    
-	for (let i = 1; i <= maxFactor; i++) {
-		diff = target - i;
-		if (diff == 0 && die == 0) 
-      count++;
-		else if (die > 0 && diff > 0)
-			count += countFactors(die, maxFactor, diff);
-	}
 
-	return count;
+  for (let i = 1; i <= maxFactor; i++) {
+    diff = target - i;
+    if (diff == 0 && die == 0)
+      count++;
+    else if (die > 0 && diff > 0)
+      count += countFactors(die, maxFactor, diff);
+  }
+
+  return count;
 }

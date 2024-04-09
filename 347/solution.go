@@ -7,8 +7,9 @@ func main() {
 	fmt.Println(diceSum(2, 6, 7))
 }
 
-// n = die count
-// m = face count per die
+// Counts the number of ways a target number can be gotten by
+// adding the faces of n dice. m is the number of faces on each
+// die.
 func diceSum(n, m, target int) int {
 	return countFactors(n, m, target)
 }
