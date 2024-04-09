@@ -2,7 +2,7 @@ Imagine you have n dice, and each die has m faces on it (so the numbers are from
 
 Example:
 
-```js
+```
 let n = 1;
 let m = 6;
 
