@@ -4,6 +4,9 @@ function main() {
   expect( ["eceba"], 3 );
   expect( ["ccaabbb"], 5 );
   expect( ["abcabcabc"], 2 );
+
+  // Added tests
+  expect( ["eeeceee"], 7 );
 }
 
 function expect(testArgs, toBe) {
