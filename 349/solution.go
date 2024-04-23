@@ -12,6 +12,9 @@ func main() {
 	printArrow("right", 3)
 	printArrow("left", 5)
 	printArrow("up", 2)
+
+	// Additional tests
+	printArrow("down", 4)
 }
 
 func printArrow(direction string, n int) {

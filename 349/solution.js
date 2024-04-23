@@ -4,6 +4,9 @@ function main() {
   printArrow('right', 3);
   printArrow('left', 5);
   printArrow('up', 2);
+
+  // Additional tests
+	printArrow("down", 4)
 }
 
 function printArrow(direction, n) {
