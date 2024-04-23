@@ -6,7 +6,7 @@ function main() {
   printArrow('up', 2);
 
   // Additional tests
-	printArrow("down", 4)
+  printArrow("down", 4)
 }
 
 function printArrow(direction, n) {
