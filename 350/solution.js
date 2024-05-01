@@ -1,15 +1,18 @@
-// const layout = `\`1234567890-=\nQWERTYUIOP[]\\\nASDFGHJKL;'\bZXCVBNM,./`;
-// const shiftedLayout = `~!@#$%^&*()_+\nP{}|\nL:"\nM<>?`;
-const layout = "YDEyMzQ1Njc4OTAtPQpRV0VSVFlVSU9QW11cCkFTREZHSEpLTDsnCFpYQ1ZCTk0sLi8=";
-const shiftedLayout = "fiFAIyQlXiYqKClfKwpQe318Ckw6IgpNPD4/";
-const leftShiftMaps = [layout, shiftedLayout].map(atob).map(createLeftShiftMap);
+// const layout = `\`1234567890-=\nqwertyuiop[]\\\nasdfghjkl;'\nzxcvbnm,./`;
+// const upperCaseLayout = `QWERTYUIOP\nASDFGHJKL\nZXCVBNM`;
+// const shiftedLayout = `~!@#$%^&*()_+\np{}|\nl:"\nm<>?`;
+const layout = "YDEyMzQ1Njc4OTAtPQpxd2VydHl1aW9wW11cCmFzZGZnaGprbDsnCnp4Y3Zibm0sLi8=";
+const upperCaseLayout = "UVdFUlRZVUlPUApBU0RGR0hKS0wKWlhDVkJOTQ==";
+const shiftedLayout = "fiFAIyQlXiYqKClfKwpwe318Cmw6IgptPD4/";
+const leftShiftMaps = [layout, upperCaseLayout, shiftedLayout].map(atob).map(createLeftShiftMap);
 
 main();
 
 function main() {
   console.log(translateRightShift(";p; epeor"));
   console.log(translateRightShift("ejp s, o"));
-  console.log(translateRightShift("kpm nr;;opm od s hrmoid"));
+  // Easter egg ^_^
+  console.log(translateRightShift(`jyy[d"zzupiyi/nrzfWe5e0EhCvW`));
 }
 
 function translateRightShift(input) {
@@ -30,7 +33,6 @@ function translateString(leftShiftMap, input) {
  */
 function createLeftShiftMap(layout) {
   return layout.
-    toLowerCase().
     split('\n').
     reduce((leftMap, layoutRow) => {
       return mergeObjects(leftMap, createLeftShiftMapForLayoutRow(layoutRow))
@@ -46,17 +48,18 @@ function createLeftShiftMapForLayoutRow(layoutRow) {
   return Object.
     values(layoutRow).
     reduce((leftMap, char, i) => {
-      leftMap[char] = i > 0 ? layoutRow[i - 1] : undefined;
+      leftMap[char] = i > 0 ? layoutRow[i - 1] : layoutRow[layoutRow.length - 1];
       return leftMap;
     }, {});
 }
 
 /**
- * Merges two objects in the reverse order. Values in a replace existing values in b.
+ * Merges two objects in reverse order. Values in a replace values from b.
  * @param {object} a 
  * @param {object} b 
  * @returns {object}
  */
-function mergeObjects(a, b) {
-  return { ...b, ...a };
+function mergeObjects(a, ...args) {
+  if (args.length == 0) return a;
+  return { ...args[args.length - 1], ...mergeObjects(a, ...args.slice(0, -1)) };
 }
