@@ -1,10 +1,7 @@
-// const layout = `\`1234567890-=\nqwertyuiop[]\\\nasdfghjkl;'\nzxcvbnm,./`;
-// const upperCaseLayout = `QWERTYUIOP\nASDFGHJKL\nZXCVBNM`;
-// const shiftedLayout = `~!@#$%^&*()_+\np{}|\nl:"\nm<>?`;
-const layout = "YDEyMzQ1Njc4OTAtPQpxd2VydHl1aW9wW11cCmFzZGZnaGprbDsnCnp4Y3Zibm0sLi8=";
-const upperCaseLayout = "UVdFUlRZVUlPUApBU0RGR0hKS0wKWlhDVkJOTQ==";
-const shiftedLayout = "fiFAIyQlXiYqKClfKwpwe318Cmw6IgptPD4/";
-const leftShiftMaps = [layout, upperCaseLayout, shiftedLayout].map(atob).map(createLeftShiftMap);
+const layout = `\`1234567890-=\nqwertyuiop[]\\\nasdfghjkl;'\nzxcvbnm,./`;
+const upperCaseLayout = `QWERTYUIOP\nASDFGHJKL\nZXCVBNM`;
+const shiftedLayout = `~!@#$%^&*()_+\np{}|\nl:"\nm<>?`;
+const leftShiftMaps = [layout, upperCaseLayout, shiftedLayout].map(createLeftShiftMap);
 
 main();
 

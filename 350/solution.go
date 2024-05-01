@@ -2,17 +2,15 @@ package main
 
 import (
 	"bytes"
-	"encoding/base64"
 	"fmt"
-	"log"
 	"maps"
 	"strings"
 )
 
 const (
-	layout          = "YDEyMzQ1Njc4OTAtPQpxd2VydHl1aW9wW11cCmFzZGZnaGprbDsnCnp4Y3Zibm0sLi8="
-	upperCaseLayout = "UVdFUlRZVUlPUApBU0RGR0hKS0wKWlhDVkJOTQ=="
-	shiftedLayout   = "fiFAIyQlXiYqKClfKwpwe318Cmw6IgptPD4/"
+	layout          = "`1234567890-=\nqwertyuiop[]\\\nasdfghjkl;'\nzxcvbnm,./"
+	upperCaseLayout = "QWERTYUIOP\nASDFGHJKL\nZXCVBNM"
+	shiftedLayout   = "~!@#$%^&*()_+\np{}|\nl:\"\nm<>?"
 )
 
 var globalLeftShiftMap map[byte]byte
@@ -23,12 +21,7 @@ func init() {
 
 	// Generate the shift map for the supplied layouts
 	for _, layout := range layouts {
-		decodedLayout, err := base64.StdEncoding.DecodeString(layout)
-		if err != nil {
-			log.Fatalf("decoding error: %s", err)
-		}
-
-		leftShiftMap := createLeftShiftMap(decodedLayout)
+		leftShiftMap := createLeftShiftMap([]byte(layout))
 		globalLeftShiftMap = mergeMaps(globalLeftShiftMap, leftShiftMap)
 	}
 }
@@ -59,8 +52,7 @@ func translateString(leftShiftMap map[byte]byte, input string) string {
 // Creates an object that maps a key to the key that precedes it (key to its left).
 func createLeftShiftMap(layout []byte) map[byte]byte {
 	leftShiftMap := make(map[byte]byte)
-	lowercased := bytes.ToLower(layout)
-	layoutRows := bytes.Split(lowercased, []byte("\n"))
+	layoutRows := bytes.Split(layout, []byte("\n"))
 	for _, layoutRow := range layoutRows {
 		leftShiftMap = mergeMaps(leftShiftMap, createLeftShiftMapForLayoutRow(layoutRow))
 	}
