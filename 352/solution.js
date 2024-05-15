@@ -7,10 +7,10 @@ function main() {
   expect([3, 1, 8, 0, -3, 6], 144);
 }
 
-function expect(testArgs, toBe) {
-  const result = maxProduct(testArgs);
-  if (result != toBe) {
-    console.error(`Expected maxProduct(${testArgs.join(", ")}) == ${toBe}, got ${result}`);
+function expect(args, expected) {
+  const result = maxProduct(args);
+  if (result != expected) {
+    console.error(`Expected maxProduct(${args.join(", ")}) == ${expected}, got ${result}`);
   }
 }
 
