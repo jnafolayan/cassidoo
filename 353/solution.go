@@ -59,7 +59,7 @@ func fixInvertedPunc(sentence string) string {
 			prevP = p
 			continue
 		}
-		p.idx = p.idx - prevP.idx - 1
+		p.idx -= prevP.idx + 1
 		prevP = p
 	}
 
