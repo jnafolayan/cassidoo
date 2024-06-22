@@ -18,7 +18,7 @@ function isArrayEqual(a, b) {
 }
 
 function onlyEvens(integers) {
-  return integers.filter(isEven).toSorted();
+  return integers.filter(isEven).toSorted((a, b) => a - b);
 }
 
 function isEven(num) {
