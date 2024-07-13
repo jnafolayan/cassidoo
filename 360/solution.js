@@ -5,7 +5,7 @@ function main() {
   expect([1, 0, 0, 0, 1], 2, false);
   expect([0, 0, 0, 0, 0], 3, true);
   expect([1, 0, 1, 0, 1], 1, false);
-  
+
   // Extra cases
   expect([0, 0, 0], 2, true);
   expect([0], 1, true);
@@ -33,9 +33,10 @@ function canPlantFlowers(field, k) {
       i++;
       continue;
     }
-    if (cur == SOIL && 
+    if (
       (i == 0 || field[i-1] == SOIL) && 
-      (i+1 == field.length || field[i+1] == SOIL)) {
+      (i+1 == field.length || field[i+1] == SOIL)
+    ) {
       field[i] = PLANT;
       k--;
     }
