@@ -3,14 +3,10 @@ console.log(equalLettersAndDigits("a123b4c"));
 console.log(equalLettersAndDigits("a12bc34"));
 
 function equalLettersAndDigits(s) {
-    const letters = new Set();
-    const digits = new Set();
     const equalSlices = [];
 
     for (let i = 0; i < s.length; i++) {
-        letters.clear();
-        digits.clear();
-        const equal = equalLettersAndDigitsFn(s, i, letters, digits);
+        const equal = equalLettersAndDigitsFn(s, i);
         const slices = equal.map((idx) => [i, idx, idx - i]);
         if (slices.length) {
             equalSlices.push(...slices);
@@ -31,7 +27,9 @@ function equalLettersAndDigits(s) {
     return s.substring(start, end + 1);
 }
 
-function equalLettersAndDigitsFn(s, offset, letters, digits) {
+function equalLettersAndDigitsFn(s, offset) {
+    const letters = new Set();
+    const digits = new Set();
     const equalIndices = [];
     for (let i = offset; i < s.length; i++) {
         const c = s[i];
